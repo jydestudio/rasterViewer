@@ -1,0 +1,538 @@
+body {
+    margin: 0.5%;
+    font-family: "Poppins", sans-serif;
+
+}
+
+
+section {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#left-pane {
+    width: 19.75%;
+    height: 100vh;
+    background-color: #ededed;
+}
+
+
+#map {
+    width: 79.75%;
+    height: 100vh;
+    /* background-color: white; */
+}
+
+#left-pane {
+    padding: 2%;
+}
+
+
+/* Upload button styling */
+
+.upload-button {
+    width: 100%;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #151515;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.upload-button:hover {
+    background-color: #000000;
+}
+.upload-button svg {
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+}
+#file-upload {
+    display: none;
+}
+
+
+
+/* preview box */
+
+#preview-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px #0000001a;
+    max-height: 320px;
+    margin-top: 10%;
+}
+
+.preview-box {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #f0f0f3, #cacacc);
+    box-shadow:
+        5px 5px 10px #bebebe,
+        -5px -5px 10px #ffffff;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    width: 140px;
+}
+
+.preview-box:hover {
+    transform: scale(1.05);
+    box-shadow:
+        8px 8px 15px #bebebe,
+        -8px -8px 15px #ffffff;
+}
+
+.preview-box canvas {
+    height: 180px;
+    width: 100%;
+    border-radius: 8px;
+    object-fit: contain;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #eaeaea;
+}
+
+.preview-box p {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    word-break: break-word;
+}
+
+
+
+/* symbology box styling */
+
+#symbology-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;       /* same as preview box width */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fafafa;
+  padding: 15px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #333;
+  margin-top: 10%;
+}
+
+#symbology-container label {
+  font-weight: 500;
+  text-align: center;
+  user-select: none;
+  padding-bottom: 15%;
+}
+
+
+
+#symbology-select {
+  width: 100%;
+  padding: 6px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  background-color: #fff;
+}
+
+
+#symbology-select {
+  width: 100%px;          /* a bit wider */
+  padding: 6px 12px;
+  border-radius: 12px;   /* more rounded edges */
+  border: 1px solid #dfdfdf;
+  color: #1a1a1a;          /* black text */
+  font-weight: 400;
+  font-size: 14px;
+  cursor: pointer;
+  background-image: linear-gradient(90deg, #440154, #3b528b, #21918c, #5ec962, #fde725);
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 1.5em 1.5em;
+  position: relative;
+  transition: background-image 0.3s ease;
+  margin-top: 3%;
+}
+
+
+/* Custom arrow with a triangle */
+#symbology-select::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: 50%;
+  right: 15px;
+  width: 0;
+  height: 0;
+  margin-top: -3px;
+  border-top: 6px solid white;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+/* Optional: Focus styling */
+#symbology-select:focus {
+  outline: none;
+}
+
+
+#symbology-container .opacity-control {
+    width: 100%;
+    margin-top: 10%;
+    padding: 5%;
+}
+
+.opacity-control input[type="range"] {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background: #ddd;
+    color: #1a1a1a;
+    border-radius: 5px;
+    margin-top: 3%;
+}
+
+
+/* For Chrome, Safari, Edge */
+#opacity-range::-webkit-slider-thumb {
+    background: #1a1a1a; /* Indigo color, change as you like */
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0,0,0,0.5);
+    -webkit-appearance: none;
+  }
+  
+  /* For Firefox */
+  #opacity-range::-moz-range-thumb {
+    background: #1a1a1a;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 2px rgba(0,0,0,0.5);
+  }
+
+  
+
+
+  /* legend styling */
+
+  #legend {
+    bottom: 20px;
+    left: 20px;
+    background: white;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+    padding: 15px 20px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    width: 100%;
+    user-select: none;
+    z-index: 9999;
+    margin-top: 10%;
+    display: none;
+  }
+  
+  #legend h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    text-align: left;
+  }
+  
+  .legend-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  
+  .legend-list li {
+    display: flex;
+    align-items: left;
+    margin-bottom: 8px;
+    cursor: default;
+  }
+  
+  .legend-list li:last-child {
+    margin-bottom: 0;
+  }
+  
+  .legend-color {
+    display: inline-block;
+    width: 25px;
+    height: 20px;
+    margin-right: 12px;
+    /* border: 1px solid #999; */
+    box-sizing: border-box;
+    border-radius: 3px;
+  }
+  
+
+
+
+  .calculation-box {
+    height: 75px;
+    width: 150px;
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    text-align: center;
+}
+
+p {
+  font-family: "Poppins", sans-serif;
+    margin: 0;
+    font-size: 13px;
+}
+
+
+.maplibregl-popup {
+  width: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+.maplibregl-popup-content {
+  border-radius: 15px;
+  padding: 15px;
+  font-family: "Poppins", sans-serif;
+  max-width: 300px;
+  color: #333;
+  position: relative;
+  box-sizing: border-box;
+}
+
+
+.maplibregl-popup-close-button {
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+
+.maplibregl-popup-content h1 {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+
+}
+  
+
+
+.maplibregl-popup-content .ai-message {
+  width: 80%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f0f0f3;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.maplibregl-popup-content input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+
+.maplibregl-popup-content button#send-button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #303030;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+button#send-button:hover {
+  background-color: #151515;
+}
+
+
+
+
+.toggle-container {
+  max-width: 300px;
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.toggle-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+/* The switch container */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  cursor: pointer;
+}
+/* Hide default checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+/* The slider */
+.slider {
+  position: absolute;
+  inset: 0;
+  background-color: #ccc;
+  border-radius: 28px;
+  transition: background-color 0.3s ease;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #2e2e2e;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+/* Checked state */
+.switch input:checked + .slider {
+  background-color: #2e2e2e;
+}
+.switch input:checked + .slider::before {
+  background-color: #fff;
+  transform: translateX(22px);
+}
+/* Label text below each toggle */
+.toggle-label {
+  margin-top: 6px;
+  font-size: 10px;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+
+
+/* notificaiton code  */
+
+.notification {
+  position: fixed;
+  left: 60%;
+  transform: translateX(-50%);
+  background: #fff; /* Red color */
+  color: #e74c3c;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  transition: top 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center; /* Align icon and text */
+}
+
+.notification.show {
+  top: 20px;
+  opacity: 1;
+}
+
+.notification i {
+  margin-right: 10px; /* Space between icon and text */
+  font-size: 20px; /* Icon size */
+}
+
+@keyframes shake {
+  0% { transform: translateX(-50%) translateY(0); }
+  25% { transform: translateX(-50%) translateY(-5px); }
+  50% { transform: translateX(-50%) translateY(5px); }
+  75% { transform: translateX(-50%) translateY(-5px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+
+
+
+
+/* spinner */
+
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  height: 8px;             /* height of horizontal scrollbar */
+  background: transparent; /* transparent track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;   /* dark grey thumb */
+  border-radius: 4px;       /* rounded corners */
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;   /* darker on hover */
+}
+
+/* For Firefox */
+.scrollable {
+  scrollbar-width: thin;          /* thinner scrollbar */
+  scrollbar-color: #888 transparent; /* thumb color + track color */
+}
+
+/* Optional: apply .scrollable to containers with overflow */
+.scrollable {
+  overflow-x: auto;
+  overflow-y: hidden;
+}

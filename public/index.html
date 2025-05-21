@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+
+    <!-- MapLibre GL -->
+  <!-- MapLibre GL -->
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css">
+    <script src="https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js"></script>
+
+    <!-- GeoTIFF -->
+
+    <!-- TailwindCSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Shapefile JS (shp.js) -->
+    <script src="https://unpkg.com/shpjs@latest/dist/shp.min.js"></script>
+
+    <!-- Turf.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script> <!-- Latest stable version -->
+
+
+
+    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/maplibre-gl-measures@0.0.9/dist/maplibre-gl-measures.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/geotiff@2.1.3/dist-browser/geotiff.min.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+
+</head>
+<body>
+    <section>
+        <div id="left-pane">
+            <div>
+                <label for="file-upload" class="upload-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M12 22a1 1 0 01-1-1V8.414l-3.293 3.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0l5 5a1 1 0 01-1.414 1.414L13 8.414V21a1 1 0 01-1 1z" />                    </svg>
+                    Upload Raster (s)
+                </label>
+                <input id="file-upload" type="file" multiple accept=".tif,.tiff"/>
+
+
+                <div id="preview-container" style="display: none;">
+                    <!-- Previews will be added here -->
+                </div>
+            </div>
+
+            <div id="symbology-container" style="display:none;">
+                <div>
+                    <label for="symbology-select">Symbology:</label>
+                    <select id="symbology-select">
+                        <option value="plasma">Plasma</option>
+                        <option value="magma">Magma</option>
+                        <option value="inferno">Inferno</option>
+                    </select>
+
+                </div>
+                <div class="opacity-control">
+                    <label for="opacity-range">Opacity:</label>
+                    <input type="range" id="opacity-range" min="0" max="1" step="0.01" value="1" />
+                </div>
+            </div>
+
+
+            <!-- Legend container -->
+            <div id="legend">
+                <h3>Legend</h3>
+                <ul class="legend-list">
+                  <li>
+                    <span class="legend-color" style="background:#482878"></span>
+                    Very Low
+                  </li>
+                  <li>
+                    <span class="legend-color" style="background:#3e4989"></span>
+                    Low
+                  </li>
+                  <li>
+                    <span class="legend-color" style="background:#31688e"></span>
+                    Moderate
+                  </li>
+                  <li>
+                    <span class="legend-color" style="background:#26828e"></span>
+                    High
+                  </li>
+                  <li>
+                    <span class="legend-color" style="background:#1f9e89"></span>
+                    Very High
+                  </li>
+                </ul>
+              </div>
+              
+
+        </div>
+
+
+        <div id="map"></div>
+
+    </section>
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
+
+
